@@ -4,6 +4,19 @@
 
 基于gfwlist的多种代理软件配置文件生成工具，支持自定义规则，目前可生成的格式有pac, dnsmasq, wingy。
 
+
+### Fork 说明
+
+修复了 [genpac](https://github.com/JinnLynn/genpac) 项目的部分 Issue，使其兼容新版本的 Python，方便自己使用。
+
+```shell
+# 第一次使用前，需要本地安装
+python setup.py install
+
+# 生成 pac.js 格式的文件，到 ~/Library/Application\ Support/V2RayX/pac/gfwlist.js 路径下。本地的 proxy 为 SOCKS5 127.0.0.1:1081; SOCKS 127.0.0.1:1081; DIRECT
+genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1081; SOCKS 127.0.0.1:1081; DIRECT;" > ~/Library/Application\ Support/V2RayX/pac/gfwlist.js
+```
+
 ### 安装
 
 ```shell

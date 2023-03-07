@@ -10,11 +10,22 @@
 修复了 [genpac](https://github.com/JinnLynn/genpac) 项目的部分 Issue，使其兼容新版本的 Python，方便自己使用。
 
 ```shell
-# 第一次使用前，需要本地安装
+# 第一次使用前，需要安装
 python setup.py install
 
-# 生成 pac.js 格式的文件，到 ~/Library/Application\ Support/V2RayX/pac/gfwlist.js 路径下。本地的 proxy 为 SOCKS5 127.0.0.1:1081; SOCKS 127.0.0.1:1081; DIRECT
-genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1081; SOCKS 127.0.0.1:1081; DIRECT;" > ~/Library/Application\ Support/V2RayX/pac/gfwlist.js
+# --format：生成 pac.js 文件，
+# --pac-proxy：本地 proxy 的地址，请参考代理工具设置
+# 前一个 tee: pac.js 文件保存路径，一般在代理工具目录下
+# tee | head -6: 打印前几行，这里的 tee 可以防止 [Errno 32] Broken pipe
+genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1081; SOCKS 127.0.0.1:1081; DIRECT;" | tee  ~/Library/Application\ Support/V2RayX/pac/gfwlist.js | tee | head -6
+
+# 示例输出
+/**
+ * genpac 2.1.0 https://github.com/JinnLynn/genpac
+ * Generated: 2023-03-07 14:51:49
+ * GFWList Last-Modified: 2023-03-01 11:50:34
+ * GFWList From: online[https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt]
+ */
 ```
 
 ### 安装
